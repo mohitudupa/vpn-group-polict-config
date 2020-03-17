@@ -1,0 +1,10 @@
+{% for username, ip_address in addresses.items() %}
+ip local pool {{ username }} {{ ip_address }} mask 255.255.255.255
+tunnel-group {{ username }} type remote-access
+tunnel-group {{ username }} general-attributes
+address-pool {{ username }}
+authentication-server-group {{ auth_server_name }}
+default-group-policy {{ group_policy }}
+tunnel-group {{ username }} webvpn-attributes
+group-url {{ gateway_base_url }}{{ username }} enable
+{% endfor %}

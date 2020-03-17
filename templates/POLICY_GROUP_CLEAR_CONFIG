@@ -1,0 +1,4 @@
+{% for username in addresses.keys() %}
+clear configure tunnel-group {{username}}
+no ip local pool {{username}}
+{% endfor %}
