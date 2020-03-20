@@ -6,5 +6,5 @@ address-pool {{ username }}
 authentication-server-group {{ auth_server_name }}
 default-group-policy {{ group_policy }}
 tunnel-group {{ username }} webvpn-attributes
-group-url {{ gateway_base_url }}{{ username }} enable
+group-url https://{{ gateway_base_url }}/{{ username }} enable
 {% endfor %}

@@ -46,6 +46,7 @@ def generate_addresses(user_names: list, subnet: str, last_used_address: str) ->
             while last_used_address != next(hosts):
                 pass
 
+        hosts = (host for host in hosts if not(str(host).endswith('.255') or str(host).endswith('.0')))
         return {username: str(next(hosts)) for username in user_names}
     except StopIteration:
         print('Subnet too small')
@@ -97,7 +98,7 @@ def parse_args():
     parser.add_argument('-a', '--auth_server_name', type=str, metavar='', required=True,
                         help='Authentication server name')
     parser.add_argument('-b', '--gateway_base_url', type=str, metavar='', required=True,
-                        help='Base gateway URL of the group-url')
+                        help='gateway name')
     parser.add_argument('-l', '--last_used_address', type=str, metavar='', required=False,
                         help='Last used IP address in existing config')
 
